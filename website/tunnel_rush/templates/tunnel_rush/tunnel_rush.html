@@ -1,0 +1,56 @@
+{% extends 'tunnel_rush/base.html'%}
+{% load static %}
+{% block title %}
+Tunnel Rush
+{% endblock title %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'tunnel_rush/css/tunnel_rush.css' %}"/>
+{% endblock header %}
+
+{% block content%}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <div id='canvasContainer' class='container-fluid'>
+    <canvas id="canvas"></canvas>
+
+    <!------------ Welcome Container ------------------>
+    <div class='container' id='welcomeContainer' onclick='disappear(this)'>
+      <div class="row">
+        <div class="col-12">
+          <h1 class='display-4'>Tunnel Rush</h1>
+        </div>
+      </div>
+      <div class="row" id="play">
+        <div class="col-12">
+          <h2 class='display-6 options'>Play</h2>
+        </div>
+      </div>
+      <div class="row"id="leaderboard">
+        <div class="col-12">
+          <h2 class='display-6 options'>Leaderboard</h2>
+        </div>
+      </div>
+      <div class="row" onclick="showControls(this)" id="controls">
+        <div class="col-12">
+          <h2 class='display-6 options'>Controls</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div id='scoreContainer' class="row">
+      <h1 id='score'></h1>
+      <h1 id='high_score'></h1>
+    </div>
+    
+    <div id='gameOverContainer'>
+      <h1 id='gameOver'></h1>
+      <button class='btn btn-outline-info' onclick='restart()'>Play Again</button>
+    </div>
+
+  </div>
+    <script type="text/javascript" src="{% static 'tunnel_rush/js/tunnel_rush.js' %}"></script>
+    <script>
+    $(document).ready(Initialize);
+    </script>
+{% endblock content %}

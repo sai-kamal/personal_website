@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'tunnel_rush/css/base.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'tunnel_rush/images/favicon.ico' %}"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% block header %}
+    {% endblock header %}
+  </head>
+  <body>
+    <!----------- NavBar ----------->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'tunnel_rush/images/favicon-32x32.png' %}"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav nab-tabs mr-auto">
+          <a class="nav-item nav-link" href="{% url 'tunnel_rush' %}">Tunnel Rush</a>
+          <a class="nav-item nav-link" href="{% url 'projects_index' %}">Projects</a>
+        </div>
+        <div class="navbar-nav nab-tabs ml-auto">
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'signOut' %}">Sign In</a>
+          {%else %}
+            <a class="nav-item nav-link" href="{% url 'signUp' %}">Sign Up</a>
+            <a class="nav-item nav-link" href="{% url 'signIn' %}">Sign In</a>
+          {% endif%}
+        </div>
+      </div>
+    </nav>
+
+    <!----------- Main Content of the page ----------->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ message }}
+        </div>
+      {% endfor %}
+    {%endif %}
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    
+    <!-- main content -->
+    <div class="container-fluid content_block">
+    {% block content %}{% endblock %}
+    </div>
+
+
+    <!-- Footer -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'tunnel_rush/js/base.js' %}"></script>
+    <!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

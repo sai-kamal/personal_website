@@ -1,0 +1,70 @@
+/* body { */
+    /* Location of the image */
+    /* background-image: url('../images/background_2.jpg'); */
+    /* Image is centered vertically and horizontally at all times */
+    /* background-position: center center; */
+    /* Image doesn't repeat */
+    /* background-repeat: no-repeat; */
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+    /* background-attachment: fixed; */
+    /* This is what makes the background image rescale based on its container's size */
+    /* background-size: cover; */
+/* } */
+
+hr {
+    border: 3px whitesmoke solid;
+    width: 75%;
+}
+
+.container_intro {
+    position: absolute;
+    top: 35vh;
+}
+
+.intro_text h1 {
+    font-size: 3rem;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    hr {
+        width: 30rem;
+    }
+    .intro_text h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    hr {
+        width: 35rem;
+    }
+    .intro_text h1 {
+        font-size: 4rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    hr {
+        width: 50rem;
+    }
+    .intro_text h1 {
+        font-size: 4rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    hr {
+        width: 60rem;
+    }
+    .intro_text h1 {
+        font-size: 4.5rem;
+    }
+}
