@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import json
+
+#take care of the relative path
+with open(os.path.abspath('../config.json')) as config_fp:
+    config = json.load(config_fp)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,14 +82,16 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# have the database created in the server
+#TODO: change this to get parameters from a config file
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_website',
-        'USER': 'root_website',
-        'PASSWORD': 'password_website',
-        'HOST': '127.0.0.1',
-        'PORT': '',
+        'NAME': config['DB_name'],
+        'USER': config['DB_username'],
+        'PASSWORD': config['DB_password'],
+        'HOST': config['DB_host'],
+        'PORT': config['DB_port'],
     }
 }
 

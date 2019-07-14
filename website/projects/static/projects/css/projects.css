@@ -1,0 +1,16 @@
+.card {
+    margin: 2%;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .5);
+    background-color: aliceblue;
+}
+
+.container {
+    width: 50vw;
+}
+
+.custom_pagination {
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .5);
+    margin-left: 1vw;
+}

@@ -1,5 +1,6 @@
 html {
-    color: #222;
+    /* color: #222; */
+    color: black;
     font-size: 10px;
 }
 
@@ -31,7 +32,10 @@ body {
     /* background-color: #e3e3e3; */
     /* background-color: #fb9985; */
     /* background-color: #233237; */
-    background-color: rgba(87, 188, 144, 0.726);
+    /* background-color: rgba(87, 188, 144, 0.726); */
+    /* background-color: rgb(47, 79, 79); */
+    background-color: cadetblue;
+    /* background-color: silver; */
 }
 
 

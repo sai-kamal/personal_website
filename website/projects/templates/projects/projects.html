@@ -1,0 +1,83 @@
+{% extends 'tunnel_rush/base.html'%}
+
+{% load static %}
+
+{% block title %}
+Projects
+{% endblock title %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'projects/css/projects.css' %}"/>
+{% endblock header %}
+
+{% block content%}
+<div class='container-fluid'>
+<!------------------ userinfo gravatar and clickable link------------------>
+
+<!------------------ repos info and clickable link------------------>
+    <div class='container text-center'>
+    {% for project in projects %}
+        <div class='card'>
+            <div class='card-body'>
+                <div class='row'>
+                    <div class='col-12'>
+                        <h1 class='card-title'><a href='{{ project.html_url }}'> {{ project.name }} </a></h1>
+                        <hr/>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-12'>
+                        {% if project.description %}
+                            <p class='card-text'> {{ project.description }} </p>
+                        {% else %}
+                            <p class='card-text'>  Zero, zip, nada :P </p>
+                        {% endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <div class='row col-12'>
+            {% if is_paginated %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination custom_pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="" aria-label="Previous">
+                        {% endif %}
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% elif num >= page_obj.number|add:'-1' and num <= page_obj.number|add:'1' %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="" aria-label="Next">
+                        {% endif %}
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+<script src="{% static 'projects/js/projects.js' %}"></script>
+{% endblock content %}
