@@ -1,3 +1,4 @@
+/* --------------- General CSS settings ---------------- */
 * {
     padding: 0;
     margin: 0;
@@ -9,17 +10,12 @@
     src: url('../fonts/mine.ttf');
 }
 
+/* --------------- canvasContainer ---------------- */
 #canvasContainer {
     background: black;
     text-align: center;
-    font-family: myFirstFont
+    font-family: myFirstFont;
 }
-
-.options {
-    border: 5px solid rgba(245, 245, 245, 0.486);
-    border-radius: 10px;
-}
-
 
 /* --------------- welcomeContainer ---------------- */
 #welcomeContainer {
@@ -34,6 +30,8 @@
 #welcomeContainer .row {
     padding-top: 1%;
     padding-bottom: 1%;
+    margin: 1%;
+    cursor: pointer;
 }
 
 #welcomeContainer h1, h2 {
@@ -42,30 +40,98 @@
     color: rgb(133, 27, 27);
 }
 
+.options {
+    border: 5px solid rgba(245, 245, 245, 0.486);
+    border-radius: 10px;
+}
+
+/* --------------- leaderBoardContainer ---------------- */
+#leaderBoardContainer {
+    position: absolute;
+    border-radius: 15px;
+    width: 50vw;
+    top: 15vh;
+    left: 22.5vw;
+    background-color: rgb(245, 245, 245, 0.5);
+}
+
+#leaderBoardContainer .row {
+    margin: 1%;
+    cursor: default;
+}
+
+#leaderBoardContainer h1, h2 {
+    font-weight: bolder;
+    padding: 2%;
+    color: rgb(133, 27, 27);
+}
+
+/* --------------- controlsContainer ---------------- */
+#controlsContainer {
+    position: absolute;
+    border-radius: 15px;
+    width: 25vw;
+    top: 20vh;
+    left: 37.5vw;
+    background-color: rgb(245, 245, 245, 0.5);
+}
+
+#controlsContainer .row {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 1%;
+    cursor: default;
+}
+
+#controlsContainer h1, h2 {
+    font-weight: bolder;
+    padding: 2%;
+    color: rgb(133, 27, 27);
+}
+
+
+/* --------------- scoreContainer ---------------- */
 #scoreContainer {
-    visibility: visible;
     position: absolute;
-    top: 5%;
-    left: 3%;
     border-radius: 15px;
-    padding: 1.5%;
-    opacity: 0.4;
-    background-color: whitesmoke;
+    width: 20vw;
+    top: 10vh;
+    left: 2vw;
+    background-color: rgb(245, 245, 245, 0.5);
 }
 
+#scoreContainer .row {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 1%;
+    cursor: default;
+}
 
+#scoreContainer h1, h2 {
+    font-weight: bolder;
+    padding: 2%;
+    color: rgb(133, 27, 27);
+}
+
+/* --------------- gameOverContainer ---------------- */
 #gameOverContainer {
-    visibility: hidden;
     position: absolute;
-    top: 35%;
-    left: 40%;
     border-radius: 15px;
-    padding: 1.5%;
-    opacity: 0.4;
-    background-color: whitesmoke;
+    width: 33vw;
+    top: 30vh;
+    left: 33.5vw;
+    background-color: rgb(245, 245, 245, 0.5);
 }
 
-#gameOver,
-#score {
+#gameOverContainer .row {
+    padding-top: 1%;
+    padding-bottom: 2%;
+    margin: 2%;
+    cursor: default;
+}
+
+#gameOverContainer h1, h2 {
+    font-weight: bolder;
+    padding: 2%;
     color: rgb(133, 27, 27);
 }

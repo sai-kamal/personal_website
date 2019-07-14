@@ -12,6 +12,7 @@ window.velocity = 1;
 window.level = 1;
 window.score = 0;
 window.prevScore = -10;
+window.collision = 0;
 
 var numObstacles = 7;
 var numObstacles2 = 5;
@@ -52,6 +53,7 @@ window.Camera = Camera
 
 function Initialize() {
   // document.getElementById('backaudio').play();
+  init_containers();
   window.canvas = document.getElementById("canvas");
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
@@ -94,10 +96,10 @@ function keyChecker (key) {
 }
 
 function keyImplementation () {
-  if (window.keyMap[37]) {
+  if (window.keyMap[65]) {
     window.octStepsA -= 1;
   }
-  else if (window.keyMap[69]) {
+  else if (window.keyMap[68]) {
     window.octStepsD -= 1;
   }
   //FOR forward and backward
@@ -126,7 +128,6 @@ function keyImplementation () {
 }
 
 function autoMovement() {
-
   Camera.x = revolveRadius * Math.cos(toRadians(window.revolveAngle));
   Camera.z = revolveRadius * Math.sin(toRadians(window.revolveAngle));
   
@@ -161,13 +162,18 @@ function resizeCanvas() {
 }
 
 function tick(now) {
+  if(window.playFlag == -1)
+    return;
   requestAnimationFrame(tick);
   if (!window.program) return;
   animate(now);
-  keyImplementation();
+  // keyImplementation();
   autoMovement();
   drawScene();
-  detectCollisions();
+  if(window.playFlag == 1) {
+    keyImplementation();
+    detectCollisions();
+  }
 }
 
 function animate(now) {
@@ -207,8 +213,15 @@ function animate(now) {
   }
   if(window.revolveSpeed > 50)
     window.revolveSpeed = 50;
-  var score = document.getElementById('score')
-  score.innerText = 'SCORE: ' + window.score + '\n\n' + 'LEVEL: ' + window.level;
+
+  //update score for html page
+  if(window.score > window.high_score) {
+    window.high_score = window.score;
+  }
+  $('#score').text(window.score);
+  $('#high_score').text(window.high_score);
+  $('#level').text(window.level);
+
   now *= 0.00085;
   window.deltaTime = now - then;
   updateCamera();
@@ -290,11 +303,7 @@ function detectCollisions () {
     window.octAngle % 180 <= (models["obstacle" + i].rotateAngle2 % 180 + angle)) &&
     ((window.revolveAngle % 360 <= models["obstacle" + i].rotateAngle1 + 4) && window.revolveAngle % 360 >= models["obstacle" + i].rotateAngle1 - 4)
     ) {
-      window.playFlag = 0;
-      document.getElementById('gameOverContainer').style.visibility = "visible";
-      document.getElementById('scoreContainer').style.visibility = "hidden";
-      document.getElementById('gameOver').innerText = "GAME OVER \n\n SCORE: " + window.score + "\n\n" + "LEVEL: " + window.level;
-
+      window.collision = 1;
     }
   }
   if(window.level >= 2) {
@@ -305,21 +314,70 @@ function detectCollisions () {
     window.octAngle % 180 <= (models["obstacleBig" + i].rotateAngle2 % 180 + angle)) &&
     ((window.revolveAngle % 360 <= models["obstacleBig" + i].rotateAngle1 + 4) && window.revolveAngle % 360 >= models["obstacleBig" + i].rotateAngle1 - 4)
       ) {
-        window.playFlag = 0;
-        document.getElementById('gameOverContainer').style.visibility = "visible";
-        document.getElementById('scoreContainer').style.visibility = "hidden";
-        document.getElementById('gameOver').innerText = "GAME OVER \n\n SCORE: " + window.score + "\n\n" + "LEVEL: " + window.level;
+        window.collision = 1;
       }
     }
+  }
+  if(window.collision) {
+    gameOver();
+    window.collision = 0;
   }
 }
 
 
 /////////////////// HTML helper functions ////////////////
-$("#welcomeContainer").click(function() {
-  this.style.visibility = 'hidden';
-});
+
+function init_containers() {
+  $('#leaderBoardContainer').css('visibility', 'hidden');
+  $('#controlsContainer').css('visibility', 'hidden');
+  $('#scoreContainer').css('visibility', 'hidden');
+  $('#gameOverContainer').css('visibility', 'hidden');
+  $('#welcomeContainer').css('visibility', 'visible');
+}
 
 $("#play").click(function() {
+  $('#welcomeContainer').css('visibility', 'hidden');
+  $('#scoreContainer').css('visibility', 'visible');
   window.playFlag = 1;
+});
+
+$("#leaderboard").click(function () {
+  $('#welcomeContainer').css('visibility', 'hidden');
+  $('#leaderBoardContainer').css('visibility', 'visible');
+});
+
+$("#controls").click(function () {
+  $('#welcomeContainer').css('visibility', 'hidden');
+  $('#controlsContainer').css('visibility', 'visible');
+});
+
+$('.back_btn').click(function() {
+  $('#welcomeContainer').css('visibility', 'visible');
+  $('#leaderBoardContainer').css('visibility', 'hidden');
+  $('#controlsContainer').css('visibility', 'hidden');
+});
+
+function gameOver() {
+  window.playFlag = -1;
+  $('#game_over_score').text(window.score);
+  $('#game_over_high_score').text(window.high_score);
+  $('#gameOverContainer').css('visibility', 'visible');
+  $('#scoreContainer').css('visibility', 'hidden');
+  if(window.high_score >= window.score) {
+      var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+      $.ajax({
+        type: "POST",
+        url: "/tunnel_rush/update_high_score/",
+        data: {
+          high_score: window.high_score,
+          csrfmiddlewaretoken: csrftoken,
+        },
+      })
+  }
+}
+
+$('#play_again').click(function() {
+  // $.when(Initialize()).then(function () {
+  //   $('#gameOverContainer').css('visibility', 'hidden')});
+  location.reload(true);
 });

@@ -28,7 +28,7 @@
         </div>
         <div class="navbar-nav nab-tabs ml-auto">
           {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'signOut' %}">Sign In</a>
+            <a class="nav-item nav-link" href="{% url 'signOut' %}">Sign Out</a>
           {%else %}
             <a class="nav-item nav-link" href="{% url 'signUp' %}">Sign Up</a>
             <a class="nav-item nav-link" href="{% url 'signIn' %}">Sign In</a>

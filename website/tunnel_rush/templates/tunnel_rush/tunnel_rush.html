@@ -9,13 +9,14 @@ Tunnel Rush
 {% endblock header %}
 
 {% block content%}
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+  <!------------ Canvas for the game ------------------>
   <div id='canvasContainer' class='container-fluid'>
     <canvas id="canvas"></canvas>
-
+    
     <!------------ Welcome Container ------------------>
-    <div class='container' id='welcomeContainer' onclick='disappear(this)'>
+    <div class='container' id='welcomeContainer'>
       <div class="row">
         <div class="col-12">
           <h1 class='display-4'>Tunnel Rush</h1>
@@ -31,26 +32,130 @@ Tunnel Rush
           <h2 class='display-6 options'>Leaderboard</h2>
         </div>
       </div>
-      <div class="row" onclick="showControls(this)" id="controls">
+      <div class="row" id="controls">
         <div class="col-12">
           <h2 class='display-6 options'>Controls</h2>
         </div>
       </div>
     </div>
-  </div>
-    <div id='scoreContainer' class="row">
-      <h1 id='score'></h1>
-      <h1 id='high_score'></h1>
-    </div>
-    
-    <div id='gameOverContainer'>
-      <h1 id='gameOver'></h1>
-      <button class='btn btn-outline-info' onclick='restart()'>Play Again</button>
+
+    <!------------ LeaderBoard Container ------------------>
+    <div class='container' id='leaderBoardContainer'>
+      <div class="row">
+        <div class="col-12">
+          <h1 class='display-4'>Leader Board</h1>
+        </div>
+      </div>
+      {% for profile in profiles %}
+      <div class="row options">
+        <div class="col-6">
+          <h2 class='display-6'>{{ profile.user.username }}</h2>
+        </div>
+        <div class="col-6">
+          <h2 class='display-6'>{{ profile.high_score }} pts</h2>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="row">
+        <button class='col-12 btn btn-danger btn-lg back_btn'>Back</button>
+      </div>
     </div>
 
+    <!------------ Instructions Container ------------------>
+    <div class='container' id='controlsContainer'>
+      <div class="row">
+        <div class="col-12">
+          <h1 class='display-4'>Controls</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 options">
+          <h2 class='display-6'> a - Go left</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 options">
+          <h2 class='display-6'> d - Go Right</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 options">
+          <h2 class='display-6'> g - toggle grey mode</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 options">
+          <h2 class='display-6'> n - Toggle night-vision</h2>
+        </div>
+      </div>
+      <div class="row">
+        <button class='col-12 btn btn-danger btn-lg back_btn'>Back</button>
+      </div>
+    </div>
+
+    <!------------ score Container ------------------>
+    <div class='container' id='scoreContainer'>
+      <div class="row">
+        <div class="col-6">
+          <h1 class='display-6'>Score</h1>
+        </div>
+        <div class="col-6">
+          <h1 class='display-6' id='score'>0</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h1 class='display-6'>High Score</h1>
+        </div>
+        <div class="col-6">
+          <h1 class='display-6' id='high_score'>{{ user.profile.high_score }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h1 class='display-6'>Level</h1>
+        </div>
+        <div class="col-6">
+          <h1 class='display-6' id='level'>1</h1>
+        </div>
+      </div>
+
+    </div>
+    
+    <!------------ Game Over Container ------------------>
+    <div class='container' id='gameOverContainer'>
+      <div class="row">
+        <div class="col-12">
+          <h1 class='display-4'>Game Over</h1>
+        </div>
+      </div>
+      <div class="row options">
+        <div class="col-6">
+          <h1 class='display-6'>Score</h1>
+        </div>
+        <div class="col-6">
+          <h1 class='display-6' id='game_over_score'>0</h1>
+        </div>
+      </div>
+      <div class="row options">
+        <div class="col-6">
+          <h1 class='display-6'>High Score</h1>
+        </div>
+        <div class="col-6">
+          <h1 class='display-6' id='game_over_high_score'>{{ user.profile.high_score }}</h1>
+        </div>
+      </div>
+      <div class='row'>
+        <button class='col-12 btn btn-danger btn-lg back_btn' id='play_again'>Home</button>
+      </div>
+    </div>
   </div>
-    <script type="text/javascript" src="{% static 'tunnel_rush/js/tunnel_rush.js' %}"></script>
-    <script>
-    $(document).ready(Initialize);
-    </script>
+
+  <script type="text/javascript" src="{% static 'tunnel_rush/js/tunnel_rush.js' %}"></script>
+  {% csrf_token %}
+  <!-- to have the game screen in the background-->
+  <script>
+  $(document).ready(Initialize);
+  window.high_score = {{ user.profile.high_score }};
+  </script>
 {% endblock content %}

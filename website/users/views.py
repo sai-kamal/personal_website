@@ -14,9 +14,4 @@ def signUp(request):
                              username + '!!')
             return redirect('signIn')  # redirect to sigIn page
     form = UserSignUpForm()
-    context = {'form': form}
-    return render(request, 'users/signUp.html', context)
-
-
-def signIn(request):
-    pass
+    return render(request, 'users/signUp.html', {'form': form})
