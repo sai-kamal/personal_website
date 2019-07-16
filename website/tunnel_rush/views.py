@@ -10,11 +10,15 @@ def index(request):
     return render(request, 'tunnel_rush/index.html')
 
 
+def sorting_func(x):
+    return x.high_score
+
+
 # ------------------- Views specifically for actions related to Tunnel Rush -------------------- #
 @login_required
 def tunnel_rush(request):
     '''renders the tunnel rush game webpage'''
-    profiles = sorted(Profile.objects.all(), reverse=True)[:7]
+    profiles = sorted(Profile.objects.all(), key=sorting_func, reverse=True)[:7]
     return render(request, 'tunnel_rush/tunnel_rush.html',
                   {'profiles': profiles, 'user': request.user})
 
