@@ -105,4 +105,4 @@ venv.bak/
 
 ./website/tunnel_rush/node_modules
 
-./config.json
+config.json
