@@ -1,7 +1,7 @@
 {
     "DB_name": "db_website",
     "DB_username": "root_website",
-    "DB_password": "Password@website123",
+    "DB_password": "password_website",
     "DB_host": "127.0.0.1",
     "DB_port": "",
     "github_username": "sai-kamal"

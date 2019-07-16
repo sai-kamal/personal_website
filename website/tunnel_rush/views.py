@@ -14,7 +14,7 @@ def index(request):
 @login_required
 def tunnel_rush(request):
     '''renders the tunnel rush game webpage'''
-    profiles = Profile.objects.all()[:7]
+    profiles = sorted(Profile.objects.all(), reverse=True)[:7]
     return render(request, 'tunnel_rush/tunnel_rush.html',
                   {'profiles': profiles, 'user': request.user})
 
