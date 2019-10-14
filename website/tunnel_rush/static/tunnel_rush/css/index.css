@@ -1,29 +1,74 @@
-/* body { */
-    /* Location of the image */
-    /* background-image: url('../images/background_2.jpg'); */
-    /* Image is centered vertically and horizontally at all times */
-    /* background-position: center center; */
-    /* Image doesn't repeat */
-    /* background-repeat: no-repeat; */
-    /* Makes the image fixed in the viewport so that it doesn't move when 
-     the content height is greater than the image height */
-    /* background-attachment: fixed; */
-    /* This is what makes the background image rescale based on its container's size */
-    /* background-size: cover; */
-/* } */
-
 hr {
-    border: 3px whitesmoke solid;
+    border: 3px rgba(105, 236, 208, 0.685) solid;
     width: 75%;
 }
 
-.container_intro {
-    position: absolute;
-    top: 35vh;
+#container_intro {
+    position: relative;
+    top: 25vh;
 }
 
 .intro_text h1 {
     font-size: 3rem;
+    color: rgb(2, 38, 73);
+}
+
+.down_arrow {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    border: 0.5rem solid rgb(2, 38, 73);
+    border-radius: 50%;
+    left: 50vw;
+    transform: translateX(-50%);
+    position: relative;
+    top: 40vh;
+}
+
+/* inserts this after down_arrow */
+.down_arrow:after {
+    content: '';
+    display: inline-block;
+    margin-top: 0.6rem;
+    margin-left: 0.7rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-top: 0.5rem solid rgb(2, 38, 73);
+    border-right: 0.5rem solid rgb(2, 38, 73);
+    -moz-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+#down_arrow_id {
+    /* -webkit-transition: background-color 0.25s ease-in-out; */
+    transition: background-color 0.25s ease-in-out;
+}
+
+#description {
+    /* positioning it wrt the body */
+    position: relative;
+    border-radius: 15px;
+    text-align: justify;
+    border: 5px solid rgba(105, 236, 208, 0.685) !important;
+    padding: 2vh;
+    width: 70%;
+    margin-left: 50vw;
+    transform: translateX(-50%);
+    top: 65vh;
+    font-size: 1.12rem;
+}
+
+.footer {
+    top: 70vh;
+}
+
+#profile_pic {
+    float: left;
+    width: 10vw;
+    margin-right: 2vh;
+    border-radius: 5px;
+    pointer-events: none;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */

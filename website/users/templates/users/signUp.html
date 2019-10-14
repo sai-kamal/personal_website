@@ -14,10 +14,10 @@ Sign Up
     <form method="POST">
     {% csrf_token %}
     <div class="row form-group justify-content-center">
-        <div class="col-4 col_custom rounded pt-2 pb-3 pl-3 pr-3 z-depth-5 ">
-            <legend class="border-bottom pb-3 text-center display-4"> <b>Sign Up</b> </legend>
+        <div class="col_custom rounded pt-2 pb-3 pl-3 pr-3 z-depth-5 ">
+            <legend class="pb-3 text-center display-4"> <b>Sign Up</b> </legend>
             {{ form|crispy }}
-            <button type="submit" class="btn btn-outline-info">Sign Up!</button>
+            <button type="submit" class="btn btn-info">Sign Up!</button>
         </div>
     </div>
     </form>

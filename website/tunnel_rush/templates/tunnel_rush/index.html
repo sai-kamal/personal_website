@@ -11,11 +11,33 @@ Home Page
 {% endblock header %}
 
 {% block content%}
-<div class='container-fluid container_intro'>
+<div class='container-fluid' id='container_intro'>
     <div class='row intro_text justify-content-center'>
         <h1 class='col-12 text-center display-2' >Hi!! I am <b class='font-weight-bold' id='identity'>Kamal</b>.</h1>
         <hr class='my-4' />
         <h1 class='col-12 text-center display-3'> Welcome to my Page!!</h1>
+    </div>
+</div>
+
+<!-- down arrow -->
+<a id='down_arrow_id' href="#description"><span class="down_arrow"></span></a>
+
+<!-- description page -->
+<div class='container-fluid' id='description'>
+    <div class='row justify-content-center'>
+        <div class='col-12'>
+            <p>
+                <img src='{% static "tunnel_rush/images/fb_profile_pic.jpg" %}' id='profile_pic'/>
+                Hi, My name is <b>A. Sai Kamal</b> currently pursuing B.Tech in CSE at IIIT Hyderabad. I currently work on MDPs in machine learning lab.I am passionate about programming and problem-solving, and have a never ending curiosity to learn new things. In particular, I am interested in natural language processing, data analytics and always open to explore new fields.
+                I never turn down opportunities to learn more and work on exciting projects. 
+                
+            </p>
+            <p>
+                Don't forget to explore my website further to know more about me and my projects ;P.
+            </p>
+        </div>
+        <div class='col-12'>
+        </div>
     </div>
 </div>
 <script src="{% static 'tunnel_rush/js/index.js' %}"></script>

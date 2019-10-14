@@ -15,15 +15,18 @@
     background: black;
     text-align: center;
     font-family: myFirstFont;
+    width: 100vw;
+    padding: 0%;
 }
 
 /* --------------- welcomeContainer ---------------- */
 #welcomeContainer {
     position: absolute;
-    width: 25vw;
+    width: 25rem;
     border-radius: 15px;
     top: 35vh;
-    left: 37.5vw;
+    left: 50vw;
+    transform: translateX(-50%);
     background-color: rgb(245, 245, 245, 0.5);
 }
 
@@ -49,9 +52,10 @@
 #leaderBoardContainer {
     position: absolute;
     border-radius: 15px;
-    width: 50vw;
+    width: 25rem;
     top: 15vh;
-    left: 22.5vw;
+    left: 50vw;
+    transform: translateX(-50%);
     background-color: rgb(245, 245, 245, 0.5);
 }
 
@@ -70,9 +74,10 @@
 #controlsContainer {
     position: absolute;
     border-radius: 15px;
-    width: 25vw;
+    width: 25rem;
     top: 20vh;
-    left: 37.5vw;
+    left: 50vw;
+    transform: translateX(-50%);
     background-color: rgb(245, 245, 245, 0.5);
 }
 
@@ -94,9 +99,10 @@
 #scoreContainer {
     position: absolute;
     border-radius: 15px;
-    width: 20vw;
+    width: 25rem;
     top: 10vh;
     left: 2vw;
+    font-size: 1vw;
     background-color: rgb(245, 245, 245, 0.5);
 }
 
@@ -117,7 +123,7 @@
 #gameOverContainer {
     position: absolute;
     border-radius: 15px;
-    width: 33vw;
+    width: 25rem;
     top: 30vh;
     left: 33.5vw;
     background-color: rgb(245, 245, 245, 0.5);

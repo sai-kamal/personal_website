@@ -1,15 +1,14 @@
 html {
-    /* color: #222; */
-    color: black;
-    font-size: 10px;
+    font-size: 15px;
 }
 
-.container-fluid {
+.navbar-container {
     padding: 0%;
 }
 
 .navbar {
-    background-color: #18121E !important;
+    /* background-color: #18121E !important; */
+    background-color: rgb(2, 38, 73) !important;
     border-bottom: 3px solid whitesmoke;
 }
 
@@ -20,11 +19,11 @@ html {
 }
 
 .navbar a:hover {
-    border-bottom: 3px solid #57BC90;
+    /* border-bottom: 3px solid rgba(105, 236, 208, 0.685); */
+    border-bottom: 3px solid rgba(105, 236, 208, 0.685);
 }
 
 body {
-    /* max-width: 100%; */
     /* background-color: #dec79b; */
     /* background-color: #d48166; */
     /* background-color: #f7f4e9; */
@@ -34,32 +33,68 @@ body {
     /* background-color: #233237; */
     /* background-color: rgba(87, 188, 144, 0.726); */
     /* background-color: rgb(47, 79, 79); */
-    background-color: cadetblue;
-    /* background-color: silver; */
+    /* background-color: cadetblue; */
+    /* background-color: azure; */
+    background-color: aliceblue;
 }
 
+img {
+    pointer-events: none;
+}
 
+.footer {
+    position: relative;
+    bottom: 0%;
+    margin-top: 3vh;
+    /* width: 30%; */
+    margin-left: 50vw;
+    transform: translateX(-50%);
+    /* border-radius: 25px; */
+    /* background-color: rgb(2, 38, 73) !important; */
+    /* border-top: 3px solid whitesmoke; */
+}
+.fa {
+    padding: 1rem;
+    margin: 1rem 0.75rem;
+    margin-top: 0;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-linkedin,
+.fa-envelope {
+    background: #007bb5;
+    color: white;
+}
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     html {
-        font-size: 10px;
+        font-size: 15px;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     html {
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     html {
-        font-size: 15px;
+        font-size: 17px;
     }
 }
 
@@ -69,3 +104,47 @@ body {
         font-size: 18px;
     }
 }
+
+/* #return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+} */

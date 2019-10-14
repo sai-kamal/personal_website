@@ -2,15 +2,31 @@
     margin: 2%;
     border-radius: 15px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, .5);
-    background-color: aliceblue;
+    /* background-color: #39a060b4; */
+    background-color: rgba(105, 236, 208, 0.685);
+    border: 2px solid rgb(2, 38, 73) !important;
 }
 
-.container {
-    width: 50vw;
+hr {
+    border: 2px solid white;
 }
 
+/* PAGINATION */
 .custom_pagination {
     border-radius: 15px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, .5);
-    margin-left: 1vw;
+    background-color: rgba(105, 236, 208, 0.685) !important;
+}
+
+.page-item a {
+    background-color: rgba(105, 236, 208, 0.685) !important;
+    border: 2px solid rgb(2, 38, 73) !important;
+}
+
+.page-item a, span {
+    color: rgb(2, 38, 73);
+}
+
+a, p {
+    color: rgb(2, 38, 73);
 }

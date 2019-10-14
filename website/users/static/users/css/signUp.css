@@ -1,11 +1,25 @@
 .form_wrapper {
     margin-top: 5vw;
+    color: rgb(2, 38, 73);
 }
 
+/* help text under input blocks is represented by form-text */
+.form-text {
+    color: rgb(2, 38, 73) !important;
+}
 .col_custom {
-    background-color: aliceblue;
+    background-color: rgba(105, 236, 208, 0.685);
     box-shadow: 20px 20px 15px rgba(0, 0, 0, .5);
+    border: 2px solid rgb(2, 38, 73);
 }
 .rounded {
     border-radius: 20px !important;
+}
+
+legend {
+    border-bottom: 3px solid white;
+}
+
+input, button {
+    border: 1px solid rgb(2, 38, 73) !important;
 }
