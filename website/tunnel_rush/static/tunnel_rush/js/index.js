@@ -12,9 +12,22 @@ $("#down_arrow_id").on('click', function (event) {
         event.preventDefault();
         var hash = this.hash;
         $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 800, function () {
-            window.location.hash = hash;
-        });
+            scrollTop: 0.95*$(hash).offset().top
+        }, 800);
+        // , function () {
+        //     window.location.hash = hash;
+        // });
+        window.location.hash = hash;
     }
 });
+
+
+function blink(selector) {
+    $(selector).fadeOut(2000, function () {
+        $(this).fadeIn(2000, function () {
+            blink(this);
+        });
+    });
+}
+
+blink('#down_arrow_id');

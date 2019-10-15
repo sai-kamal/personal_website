@@ -27,7 +27,7 @@
           <div class="navbar-nav nab-tabs mr-auto">
             <a class="nav-item nav-link" href="{% url 'tunnel_rush' %}">Tunnel Rush</a>
             <a class="nav-item nav-link" href="{% url 'projects_index' %}">Projects</a>
-            <a class="nav-item nav-link" href="{% url 'projects_index' %}">Resume</a>
+            <a class="nav-item nav-link" href="{% static 'tunnel_rush/resume.pdf' %}">Resume</a>
           </div>
           <div class="navbar-nav nab-tabs ml-auto">
             {% if user.is_authenticated %}

@@ -46,12 +46,11 @@ hr {
 }
 
 #description {
-    /* positioning it wrt the body */
     position: relative;
     border-radius: 15px;
     text-align: justify;
     border: 5px solid rgba(105, 236, 208, 0.685) !important;
-    padding: 2vh;
+    padding: 4vh;
     width: 70%;
     margin-left: 50vw;
     transform: translateX(-50%);
@@ -71,6 +70,14 @@ hr {
     pointer-events: none;
 }
 
+.heading {
+    font-weight: bold;
+    text-underline-position: below;
+}
+
+.heading_hr {
+    width: 75vw;
+}
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 
